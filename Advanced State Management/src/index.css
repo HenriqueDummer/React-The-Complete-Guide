@@ -244,6 +244,20 @@ h1 {
   margin-bottom: 1rem;
 }
 
+#notification-modal{
+  position: fixed;
+  top: 2rem;
+  width: 250px;
+  height: 100px;
+  background-color: #f5b744;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #201e1a;
+  box-shadow: 0 0 10px 5px #201e1a;
+}
+
 @keyframes fade-slide-in-from-top {
   0% {
     opacity: 0;
