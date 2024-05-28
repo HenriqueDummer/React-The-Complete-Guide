@@ -10,7 +10,7 @@ export const CartContext = createContext({
 function shoppigCartReducer(state, action) {
   if (action.type === "ADD_ITEM") {
     const updatedItems = [...state.items];
-    const id = action.payload
+    const id = action.payload;
 
     const existingCartItemIndex = updatedItems.findIndex(
       (cartItem) => cartItem.id === id
@@ -36,27 +36,27 @@ function shoppigCartReducer(state, action) {
     return {
       items: updatedItems,
     };
-  } else if(action.type === 'UPDATE_ITEM'){
+  } else if (action.type === "UPDATE_ITEM") {
     const updatedItems = [...state.items];
-      const updatedItemIndex = updatedItems.findIndex(
-        (item) => item.id === action.payload.productId
-      );
+    const updatedItemIndex = updatedItems.findIndex(
+      (item) => item.id === action.payload.productId
+    );
 
-      const updatedItem = {
-        ...updatedItems[updatedItemIndex],
-      };
+    const updatedItem = {
+      ...updatedItems[updatedItemIndex],
+    };
 
-      updatedItem.quantity += action.payload.amount;
+    updatedItem.quantity += action.payload.amount;
 
-      if (updatedItem.quantity <= 0) {
-        updatedItems.splice(updatedItemIndex, 1);
-      } else {
-        updatedItems[updatedItemIndex] = updatedItem;
-      }
+    if (updatedItem.quantity <= 0) {
+      updatedItems.splice(updatedItemIndex, 1);
+    } else {
+      updatedItems[updatedItemIndex] = updatedItem;
+    }
 
-      return {
-        items: updatedItems,
-      };
+    return {
+      items: updatedItems,
+    };
   }
 }
 
@@ -67,9 +67,6 @@ export default function CartContextProvider({ children }) {
       items: [],
     }
   );
-  const [shoppingCart, setShoppingCart] = useState({
-    items: [],
-  });
 
   function handleAddItemToCart(id) {
     shoppingCartDispatch({
@@ -84,9 +81,9 @@ export default function CartContextProvider({ children }) {
       type: "UPDATE_ITEM",
       payload: {
         productId,
-        amount
-      }
-    })
+        amount,
+      },
+    });
   }
 
   const ctxValue = {
